@@ -41,8 +41,8 @@ Dois discos ligados por um eixo oco. Funciona como pistão, e o disco de cima é
 
 | Arquivo | Versão |
 |---|---|
-| `carretel.scad` / `carretel.stl` | v1: usado nos ensaios do relatório e nas simulações de CFD |
-| `carretel_v2.*` | Folga menor, vão maior e discos mais grossos (piorou) |
+| `carretel.stl` | v1: usado nos ensaios do relatório e nas simulações de CFD |
+| `carretel_v2.stl` | Folga menor, vão maior e discos mais grossos (piorou) |
 | `carretel_v2_folga06.stl` | v2 com folga de 0,6 mm |
-| `carretel_v3.*` | Igual ao v1, só com o vão entre os discos aumentado de 30 para 45 mm |
-| `carretel_v4.*` | Borda-guia cônica (efeito Lomakin) para centralizar o carretel no tubo |
+| `carretel_v3.stl` | Igual ao v1, só com o vão entre os discos aumentado de 30 para 45 mm |
+| `carretel_v4.stl` | Borda-guia cônica (efeito Lomakin) para centralizar o carretel no tubo |
