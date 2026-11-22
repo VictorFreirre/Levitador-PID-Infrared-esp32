@@ -16,7 +16,7 @@ Autores: Matheus Freitas dos Santos e Victor Lima Freire.
 | `calibracao/` | Regressão polinomial de 3º grau usada na calibração do sensor. |
 | `analise/` | Scripts em Python para gravar ensaios pela serial e gerar as métricas e as figuras do relatório. |
 | `simscale/` | Geração da geometria do domínio de CFD (tubo com o carretel), resultados do SimScale e ajuste da força em função da velocidade do ar. |
-| `cad/` | Modelo 3D do carretel (.stl), pronto para imprimir. |
+| `cad/` | Modelos 3D (OpenSCAD + STL prontos para imprimir): estrutura completa do levitador (case do blower, bocal, grade, suporte do sensor, eletroduto, régua, pinos) e o carretel. Veja `cad/README.md`. |
 | `dados/` | CSVs dos ensaios usados no relatório (colunas: tempo em ms, referência, posição em cm, PWM em %). |
 
 ## Comandos do firmware (Serial Monitor, 115200 baud)
