@@ -13,7 +13,8 @@ Todas as peças impressas do levitador, prontas para imprimir.
 | `bocal.stl` | Bocal adaptador (saída retangular do blower → tubo Ø50 mm) |
 | `grade.stl` | Grade hexagonal frontal (encaixe por pressão) |
 | `suporte_sensor.stl` | Suporte do sensor VL53L0X no topo do tubo |
-| `tampa_sensor.stl` | Tampa de fechamento do suporte do sensor |
+| `tampa_sensor.3mf` | Tampa do suporte do sensor, com o logo do Ramo em 3 cores (veja abaixo) |
+| `tampa_sensor.stl`, `tampa_sensor_branco.stl`, `tampa_sensor_amarelo.stl` | A mesma tampa em STL: corpo azul, logo branco e logo amarelo |
 | `pino.stl` | Pino de fixação do case (imprimir 4) |
 | `clip.stl` | Clipe de trava do pino (imprimir 4) |
 | `eletroduto.stl` | Eletroduto dos fios do sensor, em segmentos encaixáveis (todos os segmentos lado a lado; cada um tem no máximo 175 mm) |
@@ -21,6 +22,27 @@ Todas as peças impressas do levitador, prontas para imprimir.
 | `marcas_regua.stl` | Linhas e números da régua antiga, para colar nos rebaixos |
 
 Peças compradas: blower Delta BFB1012EH (9733), tubo de acrílico Ø50 mm × 500 mm, sensor VL53L0X e 2 parafusos M3 com porca.
+
+### Tampa do sensor com o logo
+
+![Tampa do sensor com o logo do Ramo](levitador/tampa_sensor.png)
+
+Encaixa no `suporte_sensor.stl` de sempre (o suporte não mudou), com trava baioneta de 3 garras:
+
+1. Alinhe os 3 triângulos brancos da borda com os 3 rasgos na borda do copo.
+2. Empurre até a tampa assentar.
+3. Gire no sentido anti-horário (visto de cima) até parar, uns 20°.
+
+Para tirar, gire no sentido horário e levante.
+
+O que mudou em relação à tampa anterior:
+
+- **Saia com mais folga:** 0,2 mm por lado. Antes era 0,075 mm, justo demais para impressão FDM.
+- **Garras mais justas no canal:** 0,1 mm de folga na altura. Antes eram 0,5 mm, o que deixava a tampa solta.
+- **Saia em anel:** o centro fica livre para os fios.
+- **Borda com estrias:** dá para girar com os dedos.
+
+Imprima com o logo para baixo, na mesa, sem suporte, com camada de 0,2 mm. As cores ficam só nas 4 primeiras camadas (0,8 mm). No `tampa_sensor.3mf`, use azul no slot 1, branco no 2 e amarelo no 3.
 
 ## `levitador/stl/regua_a1/`: régua 0-50 cm para impressora de 256 mm (Bambu Lab A1)
 

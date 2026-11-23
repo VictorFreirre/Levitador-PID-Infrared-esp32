@@ -1,19 +1,35 @@
-"""Junta corpo + marcas de cada pedaço da régua num .3mf no formato da Bambu Studio:
-um objeto com 2 partes, corpo no filamento 1 e marcas (números) no filamento 2."""
-import sys, uuid, zipfile, re
+"""Junta as partes de cada cor num .3mf no formato da Bambu Studio: um objeto com várias
+partes, a primeira no filamento 1, a segunda no 2 e assim por diante.
+
+  py stl_para_3mf.py <pasta regua_a1>   -> regua_1.3mf e regua_2.3mf (corpo + números)
+  py stl_para_3mf.py --tampa <pasta stl> -> tampa_sensor.3mf (azul + branco + amarelo)"""
+import sys, uuid, zipfile, re, struct
 from pathlib import Path
 
 VERT = re.compile(r"^\s*vertex\s+(\S+)\s+(\S+)\s+(\S+)")
 
 
+def _vertices(caminho):
+    """Vértices do STL, de 3 em 3 (aceita STL em texto ou binário)."""
+    dados = open(caminho, "rb").read()
+    if dados[:5] == b"solid" and b"facet" in dados[:400]:
+        for linha in dados.decode("ascii", errors="replace").splitlines():
+            m = VERT.match(linha)
+            if m:
+                yield tuple(float(c) for c in m.groups())
+    else:
+        n = struct.unpack("<I", dados[80:84])[0]
+        for i in range(n):
+            for k in range(3):
+                o = 84 + 50*i + 12 + 12*k
+                yield struct.unpack("<3f", dados[o:o + 12])
+
+
 def ler_stl(caminho):
     tris, verts, idx = [], [], {}
     atual = []
-    for linha in open(caminho, encoding="ascii", errors="replace"):
-        m = VERT.match(linha)
-        if not m:
-            continue
-        v = tuple(round(float(c), 5) for c in m.groups())
+    for v in _vertices(caminho):
+        v = tuple(round(c, 5) for c in v)
         if v not in idx:
             idx[v] = len(verts)
             verts.append(v)
@@ -39,7 +55,12 @@ IDENT = "1 0 0 0 1 0 0 0 1 0 0 0"
 
 
 def gerar(corpo, marcas, saida, nome, mesa=256.0):
-    partes = [("corpo (azul)", *ler_stl(corpo), 1), ("numeros (branco)", *ler_stl(marcas), 2)]
+    gerar_partes([("corpo", corpo), ("numeros", marcas)], saida, nome, mesa)
+
+
+def gerar_partes(lista, saida, nome, mesa=256.0):
+    """lista = [(nome da parte, arquivo .stl), ...]; a parte k vai no filamento k+1."""
+    partes = [(pnome, *ler_stl(arq), k + 1) for k, (pnome, arq) in enumerate(lista)]
     xs = [v[0] for _, vs, _, _ in partes for v in vs]
     ys = [v[1] for _, vs, _, _ in partes for v in vs]
     cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
@@ -48,7 +69,7 @@ def gerar(corpo, marcas, saida, nome, mesa=256.0):
            f' <metadata name="BambuStudio:3mfVersion">1</metadata>\n <resources>\n')
     ids = []
     for k, (pnome, vs, ts, _) in enumerate(partes):
-        oid = 2 * k + 1                      # 1, 3 (o 2 é o objeto pai)
+        oid = 2 * k + 1                      # 1, 3, 5... (o 2 é o objeto pai)
         ids.append(oid)
         sub += mesh_xml(oid, pnome, vs, ts, cx, cy)
     sub += ' </resources>\n <build/>\n</model>\n'
@@ -102,6 +123,13 @@ def gerar(corpo, marcas, saida, nome, mesa=256.0):
 
 
 if __name__ == "__main__":
+    if sys.argv[1] == "--tampa":
+        pasta = Path(sys.argv[2])
+        gerar_partes([("corpo (azul)", pasta / "tampa_sensor.stl"),
+                      ("logo branco", pasta / "tampa_sensor_branco.stl"),
+                      ("logo amarelo", pasta / "tampa_sensor_amarelo.stl")],
+                     pasta / "tampa_sensor.3mf", "tampa_sensor")
+        sys.exit()
     pasta = Path(sys.argv[1])
     for n in (1, 2):
         saida = pasta / f"regua_{n}.3mf"
