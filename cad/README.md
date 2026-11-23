@@ -26,12 +26,12 @@ Peças compradas: blower Delta BFB1012EH (9733), tubo de acrílico Ø50 mm × 50
 
 ![Pedaços da régua na mesa da A1](levitador/regua_impressao.png)
 
-A régua é impressa **deitada**, em 2 pedaços (278 e 306 mm) na diagonal da mesa, mais uma sapata. Os números saem **na própria régua**, com o AMS, sem nada para colar.
+A régua é impressa **deitada**, em 2 pedaços (294 e 306 mm) na diagonal da mesa, mais uma sapata. Os números saem **na própria régua**, com o AMS, sem nada para colar.
 
 - **Números embutidos nas duas faces:** as marcações ocupam só as 3 primeiras e as 3 últimas camadas (0,6 mm). A troca de cor acontece em ~6 camadas, não na régua inteira, então gasta pouca purga e imprime rápido.
 - **Sem suporte:** a junta é de meia espessura (cada pedaço guarda, na ponta, só a metade que fica na mesa). Os pedaços se sobrepõem 30 mm e são travados por 2 pinos de filamento 1,75 mm (ou parafusos M2): encaixe, passe o filamento pelos furos e corte rente.
 - **Sapata separada:** encaixa na ponta de baixo da régua e apoia na flange do bocal, ao lado do tubo.
-- **Zero no meio do carretel em repouso:** a régua lê a mesma "Posicao" do firmware (centro do carretel, em cm acima do repouso). O carretel parado desce até a parte afunilada do bocal, e o meio dele fica 1,4 mm acima da base do tubo.
+- **Zero no meio do carretel em repouso:** a régua lê a mesma "Posicao" do firmware (centro do carretel, em cm acima do repouso). Parado, o carretel apoia no retificador de fluxo, na base do tubo, então o 0 cm fica 17 mm acima da base do tubo (metade da altura do carretel).
 
 | Arquivo | Uso |
 |---|---|
