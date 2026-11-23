@@ -35,9 +35,9 @@ A régua é impressa **deitada**, em 2 pedaços (294 e 306 mm) na diagonal da me
 
 | Arquivo | Uso |
 |---|---|
-| `regua_1.3mf`, `regua_2.3mf` | **Recomendado.** Abra direto na Bambu Studio: cada um é um objeto com 2 partes, corpo no filamento 1 e números no filamento 2. Coloque azul no slot 1 e branco no 2. O aviso de "configuração inválida" é normal: ele só carrega a geometria e usa os perfis da sua impressora. |
-| `regua_N_corpo.stl` + `regua_N_marcas.stl` | As mesmas peças em STL. Importe os dois **juntos**, responda "sim" para carregar como um objeto com várias partes e escolha azul para o corpo e branco para as marcas. |
-| `regua_base.stl` | Sapata, impressa em pé, numa cor só, com a abertura para cima. |
+| `regua_1.3mf`, `regua_2.3mf` | **Recomendado.** Abra direto na Bambu Studio: cada um é um objeto com 2 partes, corpo no filamento 1 e números no filamento 2. Coloque branco no slot 1 e amarelo no 2, como na montagem (ou outra combinação com bom contraste). O aviso de "configuração inválida" é normal: ele só carrega a geometria e usa os perfis da sua impressora. |
+| `regua_N_corpo.stl` + `regua_N_marcas.stl` | As mesmas peças em STL. Importe os dois **juntos**, responda "sim" para carregar como um objeto com várias partes e escolha branco para o corpo e amarelo para as marcas. |
+| `regua_base.stl` | Sapata, impressa em pé, numa cor só (azul na montagem), com a abertura para cima. |
 
 Use camada de 0,2 mm e nenhum suporte. As peças já vêm giradas 45° e centradas na mesa. `levitador/ferramentas/stl_para_3mf.py` gera os 3MF a partir dos STLs.
 
