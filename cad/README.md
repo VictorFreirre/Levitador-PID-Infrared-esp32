@@ -41,6 +41,15 @@ A régua é impressa **deitada**, em 2 pedaços (278 e 306 mm) na diagonal da me
 
 Use camada de 0,2 mm e nenhum suporte. As peças já vêm giradas 45° e centradas na mesa. `levitador/ferramentas/stl_para_3mf.py` gera os 3MF a partir dos STLs.
 
+## `logo/`: logo do Ramo Estudantil IEEE UFPR
+
+Placa redonda de Ø100 × 3 mm, colada na face do case oposta à grade, centralizada.
+
+| Arquivo | Uso |
+|---|---|
+| `logo_ramo_ieee_ufpr.3mf` | Projeto da Bambu Studio, já com as 3 cores (branco `#F3F3F3`, amarelo `#FDD215` e azul `#0F629C`). |
+| `logo_branco.stl`, `logo_amarelo.stl`, `logo_azul.stl` | Uma parte por cor, centradas no mesmo ponto. Importe as 3 juntas como um objeto com várias partes. |
+
 ## `carretel/`: objeto que levita
 
 Dois discos ligados por um eixo oco. Funciona como pistão, e o disco de cima é plano para o sensor medir melhor. Imprime em duas metades, sem suporte, com 100% de preenchimento, e as metades são coladas com cola CA.
